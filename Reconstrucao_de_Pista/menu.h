@@ -3,7 +3,12 @@
 
 #include <QMainWindow>
 
+#include <QVector>
+#include <QVariant>
+
 #include "qcustomplot.h"
+#include "xlsxdocument.h"
+#include "upload_file.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class menu; }
