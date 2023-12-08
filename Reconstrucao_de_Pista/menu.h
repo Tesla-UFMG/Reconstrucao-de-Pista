@@ -5,10 +5,12 @@
 
 #include <QVector>
 #include <QVariant>
+#include <QTimer>
+#include <QTime>
+#include <random>
 
-#include "qcustomplot.h"
+#include "C:/Users/USER/Downloads/QCustomPlot.tar/QCustomPlot-/qcustomplot.h"
 #include "xlsxdocument.h"
-#include "upload_file.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class menu; }
@@ -23,14 +25,32 @@ public:
     ~menu();
 
 private slots:
-    void on_plot_clicked();
 
+    void on_plot_clicked();
     void on_clear_clicked();
+
+    void update_time();
+
+    void on_play_clicked();
+    void on_stop_clicked();
+    void on_pause_clicked();
+
+    void move_cursor(QMouseEvent *event);
+
+    QColor generate_random_color();
+
+
+    void on_x_value_currentIndexChanged(int index);
 
 private:
     Ui::menu *ui;
-    QCustomPlot* customPlot;
-    QCPGraph* scatter;
+    QTimer *timer;
+    QTime currentTime;
+    QCPItemLine *cursor;
+    QCPItemLine *cursor_2;
+    QVector<double> x_t, x_d;
+    QVector<QVector<double>> y;
+    int nrow, ncolumn;
 
 };
 #endif // MENU_H
